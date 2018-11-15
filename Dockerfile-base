@@ -1,0 +1,11 @@
+FROM registry.cn-hangzhou.aliyuncs.com/deveops/oneapm-agent:sdk-1.8
+MAINTAINER Reworld <m13732916591_1@163.com>
+#ENV STAND_ALONE=""
+RUN yum makecache fast && rpm --rebuilddb && yum install crontabs -y && yum install wget -y \
+&& wget  https://app.oneapm.com/download/javaagent-linux-x64-lastversion.zip \
+&& mv javaagent-linux-x64-lastversion.zip /opt/
+RUN ls /opt/
+RUN yum install unzip -y && cd /opt/ && unzip javaagent-linux-x64-lastversion.zip
+#COPY docker-init.sh /usr/local/bin/
+#RUN chmod +x /usr/local/bin/docker-init.sh
+#ENTRYPOINT ["docker-init.sh"]
