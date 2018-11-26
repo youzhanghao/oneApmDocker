@@ -26,6 +26,8 @@ stand_tmp=$(echo   $STAND_ALONE   |   tr   [a-z]   [A-Z])
 flag=$(echo "yes"   |   tr   [a-z]   [A-Z]) 
 if [ "$stand_tmp" = "$flag" ]; then
 	echo "---- start collector... ----"
+	/opt/OneAPM/collector/startup.sh
+	echo "---- end -----"
     alive
 fi
 echo "java app should be run.... Please ensure that jar in /opt/ "
